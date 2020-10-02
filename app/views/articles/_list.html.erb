@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h4><small>RECENT POSTS</small></h4>
+<hr>
+<div class="container-fluid text-left shadow p-3 mb-5 bg-white rounded">
+  <div class="row content">
+    <div class="col-sm-9">
+      <% particles.each do |article| %>
+        <div class="col-sm-3">
+          <a href="<%= article_path(article.id) %>">
+          <%= image_tag article.image, style: "float:right; width:100%" %>
+          </a>
+          </div>
+        <div class="col-sm-9">
+          <br>
+          <a href="<%= article_path(article.id) %>"><h2><%= article.title %></h2></a>
+          <h5><span class="glyphicon glyphicon-time"></span> Posted by <%= article.user.email %>, <%= article.created_at %>.</h5>
+          <h5><span class="label label-danger"><%= article.category.name %></span></h5><br>
+            <p><%= article.description %></p>
+
+            <% if article.user == current_user %>
+              <%= link_to 'Edit', edit_article_path(article), class: "btn btn-primary" %>
+              <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            <% end %>
+            <br><br><br>
+        </div>
+<br>
+      <% end %>
+
+    </div>
+    <div class="col-sm-3 sidenav">
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Article', new_article_path %>

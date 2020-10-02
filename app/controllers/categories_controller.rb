@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user
+  before_action :admin_user, except:[:show]
 
 
   # GET /categories
@@ -12,6 +12,12 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @articles = @category.articles
+    respond_to do |format|
+    format.html { render 'articles/index'}
+    format.json { render :show, status: :created, location: @articles }
+  end
+
   end
 
   # GET /categories/new
