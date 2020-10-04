@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+
+  include Gravtastic
+  gravtastic
+
    enum role: [:author, :admin]
    has_many :comments
    has_many :articles
@@ -12,6 +16,5 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :author
   end
-
 
 end

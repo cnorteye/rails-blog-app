@@ -1,39 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<h4><small>RECENT POSTS</small></h4>
-<hr>
-<div class="container-fluid text-left shadow p-3 mb-5 bg-white rounded">
-  <div class="row content">
-    <div class="col-sm-9">
+<div class="site-section">
+  <div class="container">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2>Recent Posts</h2>
+        <hr>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-lg-4 mb-6">
       <% particles.each do |article| %>
-        <div class="col-sm-3">
-          <a href="<%= article_path(article.id) %>">
-          <%= image_tag article.image, style: "float:right; width:100%" %>
-          </a>
-          </div>
-        <div class="col-sm-9">
-          <br>
-          <a href="<%= article_path(article.id) %>"><h2><%= article.title %></h2></a>
-          <h5><span class="glyphicon glyphicon-time"></span> Posted by <%= article.user.email %>, <%= article.created_at %>.</h5>
-          <h5><span class="label label-danger"><%= article.category.name %></span></h5><br>
+      <div class="entry2">
+        <div class="excerpt">
+            <a href="<%= article_path(article.id) %>"><h2><%= article.title %></h2></a>
+            <span class="post-category text-black bg-secondary mb-4"><%= article.category.name %></span>
+            <div class="post-meta align-items-center text-left clearfix">
+                <span class="d-inline-block mt-1"> By <%= article.user.email %></span>
+                <span>&nbsp;-&nbsp; <%= article.created_at %></span>
+                <a href="<%= article_path(article.id) %>">
+                  <%= image_tag article.image, style: "img-fluid rounded float:right; width:100%" %>
+                </a>
+            </div>
             <p><%= article.description %></p>
-
+            <p><a href="#">Read More</a></p>
             <% if article.user == current_user %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-primary" %>
               <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             <% end %>
             <br><br><br>
         </div>
-<br>
+      </div>
       <% end %>
-
     </div>
-    <div class="col-sm-3 sidenav">
     </div>
   </div>
 </div>
-
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+<br> <br>

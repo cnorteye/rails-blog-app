@@ -1,26 +1,48 @@
+<div class="site-cover site-cover-sm same-height overlay single-page">
 
-<h2>
-  <%= @article.title %>
-</h2>
+        <div class="container">
+            <%= image_tag @article.image , style:"width:100%" %>
+        <div class="row same-height justify-content-center">
+        <div class="col-md-12 col-lg-10">
+          <div class="post-entry text-center">
+            <span class="post-category text-white bg-success mb-3"><%= @article.category.name %></span>
+            <h1 class="mb-4"><a href="#"><%= @article.title %></a></h1>
+            <div class="post-meta align-items-center text-center">
+                <span class="d-inline-block mt-1">By <%= @article.user.email %></span>
+                <span>&nbsp;-&nbsp; <%= @article.created_at %></span>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+<section class="site-section py-lg">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+    <div class="col-md-12 col-lg-8 main-content">
+      <div class="post-content-body">
+        <p><%= @article.description %></p>
+      </div>
+      <div class="pt-5">
+        <p>Categories:  <a href="#"><%= @article.category.name %></a></p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
 
-<h5><span class="label label-danger"><%= @article.category.name %></span></h5><br>
-
-<p>
-  <%= image_tag @article.image, style:"width: 40%" %>
-</p>
-
-
-<% if @article.user == current_user %>
-<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %> |
-<%= link_to 'Back', articles_path, class: "btn btn-primary" %>
-<% end %>
 
 <%= render 'comments/list', comment: @comment %>
-<% if user_signed_in?  %>
-<%= render 'comments/form', comment: @comment %>
+  <% if user_signed_in?  %>
+  <%= render 'comments/form', comment: @comment %>
 <% end %>
+
+<br>
+
+<% if @article.user == current_user %>
+    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %> |
+    <%= link_to 'Back', articles_path, class: "btn btn-primary" %>
+<% end %>
+
+<br><br>

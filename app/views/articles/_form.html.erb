@@ -28,17 +28,13 @@
     <%= form.collection_select :category_id, Category.all, :id, :name,{}, class: "form-control" %>
   </div>
 
-<!--  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div> -->
-
   <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
-
+<br>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+<br>
