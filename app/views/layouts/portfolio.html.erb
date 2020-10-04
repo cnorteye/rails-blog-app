@@ -22,28 +22,40 @@
     </head>
 
   <body>
-        <%= render 'layouts/nav' %>
-
-        <%= render 'layouts/header' %>
-
-
-        <div class="container-fluid bg-3 text-left">
-          <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert alert-danger"><%= alert %></p>
-          <% end %>
-          <p class="navbar-text float-right">
-        </div>
-
-        <div class="container-fluid">
-          <div class='row'>
-            <div class='col-lg-12'>
-              <%= yield %>
-            </div>
+    <div class="site-wrap">
+      <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
           </div>
         </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <%= render 'layouts/nav' %>
+
+    <%= render 'layouts/header' %>
+
+    <div class="container-fluid bg-3 text-left">
+    <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <p class="navbar-text float-right">
+
+  <%= yield %>
+
+    </div>
+
+      <!--  <div class="container-fluid">
+          <div class='row'>
+            <div class='col-lg-12'>
+
+            </div>
+          </div>
+        </div> -->
 
         <%= render 'layouts/footer' %>
 
