@@ -23,6 +23,7 @@
    font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
 #banner{
+    background-image: url(<%= asset_path 'image_10.jpg' %>);
       background-image: no-repeat center center;
       background-size: cover;
      }
