@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -9,7 +10,5 @@
   <%= @subscriber.email %>
 </p>
 
-<% if @article.user == current_user %>
-    <%= link_to 'Edit', edit_subscriber_path(@article), class: "btn btn-primary" %> |
-    <%= link_to 'Back', subscribers_path, class: "btn btn-primary" %>
-<% end %>
+<%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
+<%= link_to 'Back', subscribers_path %>

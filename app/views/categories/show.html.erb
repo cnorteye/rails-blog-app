@@ -5,7 +5,5 @@
   <%= @category.name %>
 </p>
 
-<% if @article.user == current_user %>
-      <%= link_to 'Edit', edit_category_path(@article), class: "btn btn-primary" %> |
-      <%= link_to 'Back', categories_path, class: "btn btn-primary" %>
-<% end %>
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
